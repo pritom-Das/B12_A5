@@ -16,7 +16,7 @@ const cards = [
         serviceBan:"পুলিশ ",
         serviceEn : "Police ",
         contact : "999",
-        contactInfo : "সার্বজনীন"
+        contactInfo : "পুলিশ"
         
 
     },
@@ -26,7 +26,7 @@ const cards = [
          serviceBan:"ফায়ার সার্ভিস ",
         serviceEn : "Fire Service ",
         contact : "999",
-        contactInfo : "সার্বজনীন"
+        contactInfo : "ফায়ার"
 
     },
 
@@ -34,8 +34,8 @@ const cards = [
         cardimg : "assets/ambulance.png",
         serviceBan:" অ্যাম্বুলেন্স",
         serviceEn : "Ambulance ",
-        contact : "999",
-        contactInfo : "সার্বজনীন"
+        contact : "1994-999999",
+        contactInfo : "স্বাস্থ্য"
 
     },
 
@@ -43,8 +43,8 @@ const cards = [
          cardimg : "assets/emergency.png",
          serviceBan:"নারী ও শিশু সহায়তা ",
         serviceEn : "Women & Child Helpline ",
-        contact : "999",
-        contactInfo : "সার্বজনীন"
+        contact : "109",
+        contactInfo : "সহায়তা"
 
     },
 
@@ -52,32 +52,32 @@ const cards = [
         cardimg : "assets/emergency.png",
         serviceBan:" দুদক",
         serviceEn : "Anti-Corruption ",
-        contact : "999",
-        contactInfo : "সার্বজনীন"
+        contact : "106",
+        contactInfo : "সরকারি"
 
     },
     {
         cardimg : "assets/emergency.png",
         serviceBan:"বিদ্যুৎ বিভ্রাট ",
         serviceEn : "Electricity Outage ",
-        contact : "999",
-        contactInfo : "সার্বজনীন"
+        contact : "16216",
+        contactInfo : "বিদ্যুৎ"
 
     },
     {
         cardimg : "assets/emergency.png",
         serviceBan:"ব্র্যাক ",
         serviceEn : " Brac  ",
-        contact : "999",
-        contactInfo : "সার্বজনীন"
+        contact : "16445",
+        contactInfo : "এনজিও"
 
     },
     {
         cardimg : "assets/emergency.png",
         serviceBan:"বাংলাদেশ রেলওয়ে ",
         serviceEn : " Bangladesh Railway",
-        contact : "999",
-        contactInfo : "সার্বজনীন"
+        contact : "163",
+        contactInfo : "পরিবহন"
 
     },
 
@@ -86,7 +86,7 @@ const cards = [
 // ..............to Create card................
 function createCard (cardData){
     const card_Div = document.createElement('div');
-    card_Div.className ="card p-4 border-1 border-gray-200 w-[350px] max-h-[360px] bg-white"
+    card_Div.className ="card p-4 border-1 border-gray-200 w-[320px] max-h-[360px] bg-white"
 
     //image and icon div part
     const imgDiv = document.createElement('div');
@@ -118,8 +118,8 @@ function createCard (cardData){
 
      const btnDiv = document.createElement('div');
      btnDiv.className =" mt-4 grid grid-cols-2 gap-2";
-     btnDiv.innerHTML = ` <button class="btn btn-neutral btn-outline "><span><i class="fa-regular fa-copy"></i></span>Copy</button>
-                      <button class="btn btn-active btn-success"><span><i class="fa-solid fa-phone"></i></span>Call</button>
+     btnDiv.innerHTML = ` <button class="btn text-[#5C5C5C]"><span><i class="fa-regular fa-copy"></i></span>Copy</button>
+                      <button class="btn btn-active btn-success text-white"><span><i class="fa-solid fa-phone"></i></span> <span >Call</span> </button>
                       `;
 
     card_Div.appendChild(btnDiv);
