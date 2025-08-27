@@ -1,0 +1,134 @@
+
+
+
+const cards = [
+    {cardimg : "assets/emergency.png",
+        serviceBan:"জাতীয় জরুরি সেবা ",
+        serviceEn : "National Emergency ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+
+    },
+
+    {
+        cardimg : "assets/police.png",
+        serviceBan:"পুলিশ ",
+        serviceEn : "Police ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+        
+
+    },
+
+    {
+         cardimg : "assets/fire-service.png",
+         serviceBan:"ফায়ার সার্ভিস ",
+        serviceEn : "Fire Service ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+
+    {
+        cardimg : "assets/ambulance.png",
+        serviceBan:" অ্যাম্বুলেন্স",
+        serviceEn : "Ambulance ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+
+    {
+         cardimg : "assets/emergency.png",
+         serviceBan:"নারী ও শিশু সহায়তা ",
+        serviceEn : "Women & Child Helpline ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+
+    {
+        cardimg : "assets/emergency.png",
+        serviceBan:" দুদক",
+        serviceEn : "Anti-Corruption ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+    {
+        cardimg : "assets/emergency.png",
+        serviceBan:"বিদ্যুৎ বিভ্রাট ",
+        serviceEn : "Electricity Outage ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+    {
+        cardimg : "assets/emergency.png",
+        serviceBan:"ব্র্যাক ",
+        serviceEn : " Brac  ",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+    {
+        cardimg : "assets/emergency.png",
+        serviceBan:"বাংলাদেশ রেলওয়ে ",
+        serviceEn : " Bangladesh Railway",
+        contact : "999",
+        contactInfo : "সার্বজনীন"
+
+    },
+
+]
+
+// ..............to Create card................
+function createCard (cardData){
+    const card_Div = document.createElement('div');
+    card_Div.className ="card p-4 border-1 border-gray-200 w-[350px] max-h-[360px] bg-white"
+
+    //image and icon div part
+    const imgDiv = document.createElement('div');
+    imgDiv.className =" img_icon flex items-center justify-between"
+    imgDiv.innerHTML =` <img src="${cardData.cardimg}" alt="" class=" p-2 bg-[#FFE3E2] rounded-xl h-[40px]">
+               <i class="fa-regular fa-heart"></i>
+    
+    `;
+    card_Div.appendChild(imgDiv);
+
+    //service div
+    const servieDiv = document.createElement('div');
+    servieDiv.className =" mt-3";
+    servieDiv.innerHTML =`   <h2 class="font-bold">${cardData.serviceBan}</h2>
+                    <p class="text-[#5C5C5C]" >${cardData.serviceEn}</p>
+                     `;
+    card_Div.appendChild(servieDiv);
+
+    //contact div
+    const contact_div = document.createElement('div');
+    contact_div.className = 'mt-3 space-y-2';
+    contact_div.innerHTML=` <h2 class="font-bold"> ${cardData.contact} </h2>
+                    <p class="text-[#5C5C5C]  inline bg-gray-100 p-1 px-1.5 rounded-xl" >${cardData.contactInfo}</p>
+                    `;
+
+     card_Div.appendChild(contact_div);
+
+     //btn div
+
+     const btnDiv = document.createElement('div');
+     btnDiv.className =" mt-4 grid grid-cols-2 gap-2";
+     btnDiv.innerHTML = ` <button class="btn btn-neutral btn-outline "><span><i class="fa-regular fa-copy"></i></span>Copy</button>
+                      <button class="btn btn-active btn-success"><span><i class="fa-solid fa-phone"></i></span>Call</button>
+                      `;
+
+    card_Div.appendChild(btnDiv);
+
+
+    return card_Div;
+}
+const card_container = document.getElementById('cardContainer');
+cards.forEach(card =>{
+   card_container.appendChild(createCard(card));
+})
+
