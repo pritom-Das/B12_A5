@@ -83,6 +83,9 @@ const cards = [
 
 ]
 
+//.........history data......
+ const historyData = [];
+
 // ..............to Create card................
 function createCard (cardData){
     const card_Div = document.createElement('div');
@@ -100,7 +103,7 @@ function createCard (cardData){
     //service div
     const servieDiv = document.createElement('div');
     servieDiv.className =" mt-3";
-    servieDiv.innerHTML =`   <h2 class="font-bold">${cardData.serviceBan}</h2>
+    servieDiv.innerHTML =`   <h2 class="font-bold service-name">${cardData.serviceBan}</h2>
                     <p class="text-[#5C5C5C]" >${cardData.serviceEn}</p>
                      `;
     card_Div.appendChild(servieDiv);
@@ -108,7 +111,7 @@ function createCard (cardData){
     //contact div
     const contact_div = document.createElement('div');
     contact_div.className = 'mt-3 space-y-2';
-    contact_div.innerHTML=` <h2 class="font-bold"> ${cardData.contact} </h2>
+    contact_div.innerHTML=` <h2 class="font-bold contact-num"> ${cardData.contact} </h2>
                     <p class="text-[#5C5C5C]  inline bg-gray-100 p-1 px-1.5 rounded-xl" >${cardData.contactInfo}</p>
                     `;
 
@@ -118,7 +121,7 @@ function createCard (cardData){
 
      const btnDiv = document.createElement('div');
      btnDiv.className =" mt-4 grid grid-cols-2 gap-2";
-     btnDiv.innerHTML = ` <button class="btn text-[#5C5C5C]"><span><i class="fa-regular fa-copy"></i></span>Copy</button>
+     btnDiv.innerHTML = ` <button class="copy-btn btn text-[#5C5C5C]"><span><i class="fa-regular fa-copy"></i></span>Copy</button>
                       <button class="call-btn btn btn-active btn-success text-white"><span><i class="fa-solid fa-phone"></i></span> <span >Call</span> </button>
                       `;
 
@@ -141,7 +144,6 @@ for(const icon of icons){
      icon.classList.toggle('fa-solid')
     let navheart = parseInt(document.getElementById('heart-count').innerText);
     navheart = navheart + 1; 
-    console.log(navheart);
     document.getElementById('heart-count').innerText = navheart;
 })
 }
@@ -160,9 +162,69 @@ const callBtns = document.getElementsByClassName('call-btn');
        
         count = count - 20;
         document.getElementById('coincount').innerText = count; 
+        const cardDiv = callbtn.closest('.card');
+        const serviceName = cardDiv.querySelector('.service-name').innerText;
+        const contact = cardDiv.querySelector('.contact-num').innerText;
+
+        const data = {
+            servicename : serviceName,
+            contactNumber : contact,
+           time: new Date().toLocaleTimeString()
+        }
+       
+
+          const historyContainer = document.getElementById('history-container');
+    //.........dynamic divs............
+    const historyItems = document.createElement('div');
+    historyItems.className = 'bg-[#FAFAFA]  flex items-center justify-between py-1.5 px-2.5 rounded '
+    historyItems.innerHTML = `
+     <div>
+                    <p>${data.servicename}</p>
+                    <p>${data.contactNumber}</p>
+                </div>
+                <div>
+                    <p>${data.time}</p>
+                </div>
+
+    `
+    historyContainer.appendChild(historyItems);
         
     })
  }
+
+ //............Copy button funcitonality..............//
+  const copybtns = document.getElementsByClassName('copy-btn');
+  for(const copybtn of copybtns){
+    copybtn.addEventListener('click',function(){
+
+        let copyCount = parseInt(document.getElementById('copyCount').innerText);
+    copyCount = copyCount + 1;
+    document.getElementById('copyCount').innerText = copyCount;
+
+        const parentCard = copybtn.closest('.card')
+        const copiedText = parentCard.querySelector('.contact-num').innerText;
+      navigator.clipboard.writeText(copiedText).then(()=>{
+        alert("copied :" +copiedText);
+      }).catch(err =>{
+        alert("failed to copied ",err);
+      })
+    })
+   
+
+  }
+
+
+
+const clearBtn = document.getElementById('clearBtn');
+clearBtn.addEventListener('click', function() {
+    const historyContainer = document.getElementById('history-container');
+
+
+    while (historyContainer.children.length > 1) {
+        historyContainer.removeChild(historyContainer.lastChild);
+    }
+  
+});
 
 
 
