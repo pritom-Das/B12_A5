@@ -92,7 +92,7 @@ function createCard (cardData){
     const imgDiv = document.createElement('div');
     imgDiv.className =" img_icon flex items-center justify-between"
     imgDiv.innerHTML =` <img src="${cardData.cardimg}" alt="" class=" p-2 bg-[#FFE3E2] rounded-xl h-[40px]">
-               <i class="fa-regular fa-heart"></i>
+               <i class=" fa-regular fa-heart heart-icon" id=""></i>
     
     `;
     card_Div.appendChild(imgDiv);
@@ -119,7 +119,7 @@ function createCard (cardData){
      const btnDiv = document.createElement('div');
      btnDiv.className =" mt-4 grid grid-cols-2 gap-2";
      btnDiv.innerHTML = ` <button class="btn text-[#5C5C5C]"><span><i class="fa-regular fa-copy"></i></span>Copy</button>
-                      <button class="btn btn-active btn-success text-white"><span><i class="fa-solid fa-phone"></i></span> <span >Call</span> </button>
+                      <button class="call-btn btn btn-active btn-success text-white"><span><i class="fa-solid fa-phone"></i></span> <span >Call</span> </button>
                       `;
 
     card_Div.appendChild(btnDiv);
@@ -131,4 +131,39 @@ const card_container = document.getElementById('cardContainer');
 cards.forEach(card =>{
    card_container.appendChild(createCard(card));
 })
+
+
+// .......................heart icon functionality..........
+
+const icons =  document.getElementsByClassName('heart-icon')
+for(const icon of icons){
+    icon.addEventListener('click', function(){
+     icon.classList.toggle('fa-solid')
+    let navheart = parseInt(document.getElementById('heart-count').innerText);
+    navheart = navheart + 1; 
+    console.log(navheart);
+    document.getElementById('heart-count').innerText = navheart;
+})
+}
+
+//........call button funcitonality ...................
+
+const callBtns = document.getElementsByClassName('call-btn');
+ for(const callbtn of callBtns){
+    callbtn.addEventListener('click',function(){
+        const coinCount =  document.getElementById('coincount').innerText;
+        let count = parseInt(coinCount);
+        if( count < 20 ){
+            alert("You don't have enoguh coin to call")
+            return;
+        }
+       
+        count = count - 20;
+        document.getElementById('coincount').innerText = count; 
+        
+    })
+ }
+
+
+
 
